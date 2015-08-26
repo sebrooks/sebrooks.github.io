@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Splash Screen</title>
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'> <!--font style-->
+	<link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css"> <!-- font style-->
+	<script>
+		function showMenu() { //shows only the menu
+			document.getElementById("menu").style.display = "inline"; 
+			document.getElementById("keywords").style.display = "none";
+			document.getElementById("citations").style.display = "none";
+			document.getElementById("howToPlay").style.display = "none";
+			document.getElementById("aboutUs").style.display = "none";
+			document.getElementById("joinTheCause").style.display = "none";
+		}
+			function showPlay() { //shows only Play or game 
+			document.getElementById("menu").style.display = "none";
+			document.getElementById("keywords").style.display = "none";
+			document.getElementById("citations").style.display = "none";
+			document.getElementById("howToPlay").style.display = "inline";
+			document.getElementById("aboutUs").style.display = "none";
+			document.getElementById("joinTheCause").style.display = "none";
+		}
+		function showKeywords() { //shows only the keywords
+			document.getElementById("menu").style.display = "none";
+			document.getElementById("keywords").style.display = "inline";
+			document.getElementById("citations").style.display = "none";
+			document.getElementById("howToPlay").style.display = "none";
+			document.getElementById("aboutUs").style.display = "none";
+			document.getElementById("joinTheCause").style.display = "none";
+		}
+		function showCitations() { //shows only the citations
+			document.getElementById("menu").style.display = "none";
+			document.getElementById("keywords").style.display = "none";
+			document.getElementById("citations").style.display = "inline";
+			document.getElementById("howToPlay").style.display = "none";
+			document.getElementById("aboutUs").style.display = "none";
+			document.getElementById("joinTheCause").style.display = "none";
+		}
+		function showHowToPlay() { //shows only How To Play 
+			document.getElementById("menu").style.display = "none";
+			document.getElementById("keywords").style.display = "none";
+			document.getElementById("citations").style.display = "none";
+			document.getElementById("howToPlay").style.display = "inline";
+			document.getElementById("aboutUs").style.display = "none";
+			document.getElementById("joinTheCause").style.display = "none";
+		}
+		function showAboutUs() { //shows the about us page 
+			document.getElementById("menu").style.display = "none";
+			document.getElementById("keywords").style.display = "none";
+			document.getElementById("citations").style.display = "none";
+			document.getElementById("howToPlay").style.display = "none";
+			document.getElementById("aboutUs").style.display = "inline";
+			document.getElementById("joinTheCause").style.display = "none";
+		}
+		function showJoinTheCause() { //shows a bunch of links to other things
+			document.getElementById("menu").style.display = "none";
+			document.getElementById("keywords").style.display = "none";
+			document.getElementById("citations").style.display = "none";
+			document.getElementById("howToPlay").style.display = "none";
+			document.getElementById("aboutUs").style.display = "none";
+			document.getElementById("joinTheCause").style.display = "inline";
+		}
+		</script>
+		<style>
+		html { 
+  		background:url(http://anotherimg.dazedgroup.netdna-cdn.com/786x700/azure/another-prod/340/5/345563.gif) no-repeat center center fixed; 
+  		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+  		-o-background-size: cover;
+  		background-size: cover; 
+  	}
+  	body { 
+  		text-align: center;
+  	} 
+  	h1 { /*the font for I WOke Up Like This*/ 
+  		color: #FF0099;
+  		font-size: 500%;
+  		font-family: 'Press Start 2P', cursive;
+  	}
+  	a { /*the font for the links */
+  		color: #E65CB8;
+  		text-decoration: none;
+  	}
+  	p {  /*the font for the p*/
+  		color:#E65CB8;
+  		font-size: 150%;
+  		font-family: 'Press Start 2P', cursive;
+  	}
+  	a:link{ /*changes all of the links to white*/
+  		color: #E65CB8;
+  	}
+  	a:active{
+  		color: #E65CB8;
+  	}
+  	.menuButtons:hover { /*when the mouse hovers. the font size increases*/ 
+  		font-size: 175%;
+  	}
+  	.backButton { /*created a back button*/ 
+  		font-size: 110%;
+  		color: gray;
+  	}
+  	#keywords { /*initially hidess keywords*/ 
+  		display: none;
+  	}
+  	#citations { /*initially hides citations*/
+  		display: none;
+  	}
+  	#howToPlay { /*initially hides how to play*/ 
+  		display: none;
+  	}
+  	#aboutUs {
+  		display: none;
+  	}
+  	#joinTheCause {
+  		display: none;
+  	}
+  	img {
+  		width: 10%;
+  		height: 5%;
+  	}
+  	</style>
+  </head>
+  <body>
+
+  	<div id="menu"> <!-- creates the menu and goes to a separate page when clicked --> 
+  		<h1>I WOKE UP LIKE THIS</h1>
+  		<a href="C:\Users\GWC1\Desktop\I-woke-up-like-this-\game.html"><p class="menuButtons">Play</p></a>
+  		<p class="menuButtons" onclick="showKeywords()">Keywords</p>
+  		<p class="menuButtons" onclick="showCitations()">Citations</p>
+  		<p class="menuButtons" onclick="showHowToPlay()">How to play</p>
+  		<p class="menuButtons" onclick="showAboutUs()">About Us</p>
+  		<p class="menuButtons" onclick="showJoinTheCause()">Join the Cause</p>
+  	</div>
+ 
+  	<div id="keywords"> <!-- when clicked on keywords, a list of keywords will appear -->
+  		<h1>KEYWORDS</h1>
+  		<p>A list words from the game you may not have known:</p>
+  		<p>Catcalling- a form of harassment. It is when a person makes a whistle, shout, or comment of a sexual nature to a woman passing by.</p>
+  		<p>Objecification - treating a person as a thing. Sexual objectification is the act of treating a person as an instrument of sexual pleasure.</p>
+  		<p> 'slut' shaming - form of social stigma applied to people who are believed to violate traditional expectations for sexual behavior, mainly for women and girls.</p>
+  		<p>wage gap - a statistical indicator often used as an index of the status of women's earning relative to men's.</p>
+  		<p> sexualization- to make something sexual in character or quality, or to become aware of sexuality, especially in relation to men and women. Often linked to sexual objectification. It occurs when "individuals are regarded as sex objects and evaluated in terms of their physical characteristics and sexiness." </p>
+  		<p> microaggressions - a term which some use to refer to unintended discrimination.</p>
+  		<p> Body shaming - inappropriate negative statments and attitutes toward another person's weight or size. </p>
+  		<p class="backButton" onclick="showMenu()">BACK</p> <!-- goes back to the menu -->
+  	</div>
+
+  	<div id="citations"> <!-- list and links of allo of the citations -->
+  		<h1>CITATIONS</h1>
+				<p><a href="https://www.nsf.gov/od/oia/activities/ceose/mini-symp-pres/Womn_of_color_stem_Oct2009/Oct27/JoanBurrelliv2.pdf" target="_blank"> Women in the STEM field</a></p>
+				<p><a href="http://www.ngcproject.org/statistics" target="_blank"> National Girls Collaborative Project</a></p>
+				<p><a href="http://www.npr.org/2014/04/01/297159948/girls-are-taught-to-think-pink-but-that-wasnt-always-so" target="_blank"> npr article by Susan Stamberg</a></p>
+				<p><a href="http://www.andrews.edu/~rbailey/Chapter%20one/9040385.pdf" target="_blank"> A Kaiser Foundation study by Nancy Signorielli</a></p>
+				<p><a href="http://www.andrews.edu/~rbailey/Chapter%20one/9040385.pdf" target="_blank"> A Kaiser Foundation study by Nancy Signorielli</a> </p>
+				<p><a href="http://www.bodyshaming.org/definition.html" target="_blank"> Body Shaming Definition</a></p>
+				<p><a href="https://en.wikipedia.org/wiki/Slut-shaming" target="_blank"> 'Slut' shaming definition</a></p>
+				<p><a href="https://en.wikipedia.org/wiki/Microaggression_theory" target="_blank"> Microagression</a></p>
+				<p><a href="https://en.wikipedia.org/wiki/Sexualization" target="_blank">Sexualization</a></p>
+				<p><a href="http://www.infoplease.com/ipa/A0763170.html" target="_blank"> Wage Gap definition</a></p>
+				<p><a href="https://en.wikipedia.org/wiki/Objectification" target="_blank"> Objectification definition</a></p>
+				<p><a href="https://en.wikipedia.org/wiki/Sexual_objectification" target="_blank"> Sexual Objectification</a></p>
+				<p><a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=catcalling" target="_blank"> Catcalling </a></p>
+				<p class="backButton" onclick="showMenu()">BACK</p> 
+			</div>
+
+	<div id="howToPlay">
+		<h1>HOW TO PLAY</h1>
+				<p>Use the up key to avoid all the obstacles coming your way!</p>
+				<p class="backButton" onclick="showMenu()">BACK</p> 
+			</div>
+
+	<div id="aboutUs">
+		<h1>About Us</h1>
+				<img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xpt1/v/t1.0-9/11923229_993458337373315_2244047196755525676_n.jpg?oh=1c41e36801bc7095476ed2b4ed28fd10&oe=566BA251">
+				<p>The Squad for Social Change are Girls Who Code students. I Woke Up Like This is our final project. We made it to bring awareness to issues women face on a daily basis. We want as many people to understand the point-of-view of women around the world.</p>
+				<p>The Team</p>
+				<img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xap1/v/t34.0-12/11920330_994075063978309_599999004_n.jpg?oh=768f2bddb1e2d0194a51400528fa5b1a&oe=55DD2F15">
+				<p>Emma "The Brain" Jaques</p>
+				<img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xlp1/v/t34.0-12/11937898_994075057311643_1897085031_n.jpg?oh=ab3627c328b5102a05500651628a0eba&oe=55DD2451">
+				<p>Sha-Asia "The Awesome" Brooks</p>
+				<img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xfp1/v/t34.0-12/11910865_994074890644993_1779811128_n.jpg?oh=be84603316c4183c7f944bd6d8c679e6&oe=55DD62B2">
+				<p>Maricruz "The Mother" Tolosa Amaya</p>
+				<img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xfl1/v/t34.0-12/11944598_994074877311661_1998716897_n.jpg?oh=fc28c3b700787414059ec0bf12e576a7&oe=55DD56DD">
+				<p>Ivy "The Great Genghis Khan" Leung</p>
+				<p class="backButton" onclick="showMenu()">BACK</p> 
+			</div>
+
+	<div id="joinTheCause">
+		<h1>JOIN THE CAUSE</h1>
+				<p><a href="http://now.org/"> National Organization for Women(NOW)</a>
+				<p><a href="http://www.awid.org/">The Association of Women's Rights in Development(AWID)</a>
+				<p><a href="http://www.aauw.org/"> The American Association of University Women(AAUW)</a>
+				<p><a href="http://www.gfwc.org/"> General Federation of Women's Club </a>
+			<p><a href="http://www.girlsinc.org/"> Girls Inc. </a>
+				<p class="backButton" onclick="showMenu()">BACK</p>
+			</div>
+
+		</body>
+		</html>

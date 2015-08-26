@@ -1,0 +1,284 @@
+<html>
+	<head>
+		<title>I Woke Up Like This!</title>
+
+		<style type= "text/css">
+			body {
+    			/*background-image: url("city1.gif");
+    			background-size:100% 100%;
+*/
+        	} 
+/*
+	        .pink {
+	        	position:absolute; 
+	        	TOP:600px; 
+	        	LEFT:100px; 
+	        	WIDTH:10px; 
+	        	HEIGHT:10px
+	        }
+*/
+        	</style>
+
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+        var Layer1;
+        var Layer2;
+        var Layer3;
+        var Layer4;
+        var L = Math.random()*800 + 100;
+        sW=1900;
+        sL=800;
+
+        void setup() {
+            //you can put things like background or size (to set the dimensions of your frame)
+            size(sW, sL);
+            //(speed, red, green, blue, minWidth, maxWidth, minHeight, maxHeight)
+            // Layer1 = new Layer(2, 0, 0, 0, sW*0.03, sW*0.0575, sL*0.7, sL*0.955); //paremeters for the farthest layer
+            // Layer1.addBuilding();
+            Layer2 = new Layer(1, 60, 60, 60, sW*0.05, sW*0.075, sL*0.495, sL*0.7); // parameters for the middle layer
+            Layer2.addBuilding();
+            Layer3 = new Layer(4, 0, 0, 0, sW*0.0875, sW*0.0875, sL*0.1475, sL*0.175); //paramenters for the closest layer
+            Layer3.addBuilding();
+
+            player = new Player();
+        }
+
+        void draw() {
+            //this is your draw loop i.e., the thing that loops over and over and over until the program is done
+            background(46, 43, 107, 0.7);
+
+            //Layer2.drawBuildings2();
+            Layer3.drawBuildings();
+            Layer3.moveBuildings();  
+
+            player.draw();
+            player.jump();
+        }
+
+        void keyPressed() {
+            console.log(key);
+            if (keyCode === UP) {
+                // alert("up arrow pressed!");
+                player.jumpState = 1;
+            }
+        }
+        
+        class Player {
+            // Player class
+
+            var r;
+            var g;
+            var b;
+            var xposition;
+            var yposition;
+            var jumpState; // 0 if not jumping, 1 if going up, 2 if going down 
+            var jumpHeight;
+
+            Player (){
+                xposition = 100;
+                yposition = 700;
+                jumpState = 0;
+                r = 100;
+                g = 100;
+                b = 100;
+                jumpHeight = 600;
+            }
+
+            void draw() {
+                fill(r,g,b);
+                noStroke();
+                rect(xposition, yposition, 100, 100);
+            }
+
+            void jump() {
+                // jumpstate = 0 if no jump
+                // jumpstate = 1 if going up
+                // jumpstate = 2 if going down
+
+                if (jumpState === 1 && yposition >= jumpHeight) {
+                    // if we haven't yet reached jump height (remember, y is opposite in processing! :))
+                    yposition = yposition - 20;
+                } 
+                else if (jumpState === 1 && yposition < jumpHeight) {
+                    // if we have reached the jump height
+                    jumpState = 2; 
+                }
+                else if (jumpState === 2 && yposition < 700) {
+                    // if we're falling and haven't reached the ground yet
+                    yposition = yposition + 20;
+                }
+                else if (jumpState === 2 && yposition >= 700) {
+                    // if we're falling and reached the ground
+                    jumpState = 0; 
+                }
+            } // end of jump function 
+
+        }
+
+        class Building { // declare your variables here e.g., var speed
+            var r; // color of the buildings
+            var g;
+            var b;
+            var h; // how tall the building
+            var w; //how fat the building
+            var xposition; // x location
+            var yposition; // y location
+
+            Building (x, y, red, green, blue, width, height){ 
+                // constructor  
+                h = height; // its up there ^^^
+                w = width; //^^
+                r = red; //^^
+                g = green;
+                b = blue;
+                xposition= x; // ^^
+                yposition = y; //^^
+                            
+            }
+            
+            void drawBuilding(){
+                fill(r,g,b);
+                noStroke();
+                rect(xposition, yposition, w, h); // draws this building at the current location
+            }
+            void drawBuilding2(){
+                fill(r,g,b);
+                noStroke();
+                rect(100, 600, w, 200); // draws this building at the current location
+            }
+            
+            void move(speed){// moves this building (you can add parameters)
+                xposition = xposition - speed;
+            }
+
+    } // end of Building class   
+
+
+        class Layer {// declare your variables here e.g. var speed;
+            var s; //how fast the buildings go
+            var r;
+            var g;
+            var b;  
+            var minw;
+            var maxw;
+            var minh;
+            var maxh;
+            var width;
+            var height;
+            var buildings = [];
+
+            Layer(speed, red, green, blue, minWidth, maxWidth, minHeight, maxHeight){ // constructor
+                s = speed;
+                r = red;
+                g = green;
+                b = blue;
+                minw = minWidth;
+                maxw = maxWidth;
+                minh = minHeight;
+                maxh = maxHeight;
+            }
+
+            void drawBuildings(){ // function for layer to draw the buildings this layer is responsible for
+                for (var i = 0; i < buildings.length; i++) {
+                    buildings[i].drawBuilding();
+                }
+            }
+            void drawBuildings2(){ // function for layer to draw the buildings this layer is responsible for
+                 for (var i = 0; i < buildings.length; i++) {
+                     buildings[i].drawBuilding2();
+                 }
+             }
+            void moveBuildings(){ // function to move the buildings that this layer is responsible for
+                for (var j = 0; j < buildings.length; j++) {
+                    buildings[j].move(s);
+                }
+                var lastbuilding = buildings.length - 1;
+                if ((buildings[lastbuilding].xposition)+(buildings[lastbuilding].w-8)<L){
+                    addBuilding();
+                }
+
+            }
+            
+            void moveBlock(){ // function to move the buildings that this layer is responsible for
+                for (var j = 0; j < buildings.length; j++) {
+                    buildings[j].move(s);
+                }
+                var lastbuilding = buildings.length - 1;
+                if ((buildings[lastbuilding].xposition)+(buildings[lastbuilding].w- random(-1000, -500))<sW){
+                    addBuilding();
+                }
+
+            }
+            
+            void addBuilding(){
+                // optional function to add a building to your lists
+                width = random(minw, maxw);
+                height = random(minh, maxh);
+                buildings.push(new Building(sW, sL - height, r, g, b, width, height)); //adds the characteristics of the new building to the buidling list
+            }
+
+        } // end of Layer class
+
+        //     var Girl = function(x, y) {
+        //     PImage b;
+        //     b = loadImage("girl.jpg");
+        //     this.x = x;
+        //     this.y = y;
+        //     this.img = image(b, 0, 0);
+        //     this.sticks = 0;
+        // };
+
+        // Girl.prototype.draw = function() {
+        //     fill(255, 0, 0);
+        //     this.y = constrain(this.y, 0, height-50);
+        //     image(this.img, this.x, this.y, 40, 40);
+        // };
+
+        // Girl.prototype.hop = function() {
+        //     PImage b;
+        //     b = loadImage("girl.jpg");
+        //     this.img = image(b, 0, 0);
+        //     this.y -= 5;
+        // };
+
+        // Girl.prototype.fall = function() {
+        //     PImage b;
+        //     b = loadImage("girl.jpg");
+        //     this.img = image(b, 0, 0);
+        //     this.y += 5;
+        // };
+
+
+        // var girl = new Girl(200, 300);
+
+        // draw = function() {
+            
+        //     // static
+        //     // background(227, 254, 255);
+        //     // fill(130, 79, 43);
+        //     // rect(0, height*0.90, width, height*0.10);
+            
+        //     if (keyIsPressed && keyCode === 0) {
+        //         girl.hop();
+        //     } else {
+        //         girl.fall();
+        //     }
+        //     girl.draw();
+        // };
+
+
+            // var girl = getImage("ladysign.PNG");
+            // image(girl, 100, 100, 200, 200);
+		</script>
+        <script type="text/javascript">
+
+  </script>
+	</head>
+	<body  background-image= "city1.gif">
+
+		<!-- <p class = "pink" id= "girl">
+            <img src="ladysign.PNG" width=95 style="position:absolute;left:200; top:675;" height="180" width="15"/><br>
+            </p> -->
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
